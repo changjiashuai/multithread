@@ -34,10 +34,22 @@ class TraditionalThread {
         }
     }
 
-    fun newThreadByKotlinExt(){
+    fun newThreadByKotlinExt() {
         thread {
-//            Thread.sleep(500) //放在这里，导致主线程退出，改线程还未执行，所以看不到打印
+            //            Thread.sleep(500) //放在这里，导致主线程退出，改线程还未执行，所以看不到打印
             println("newThreadByKotlinExt name = ${Thread.currentThread().name}")
         }
+    }
+
+    fun newChildThreadAndImplRunnable() {
+        val thread = object : Thread(Runnable {
+            println("new Runnable run name = ${Thread.currentThread().name}")
+        }) {
+            override fun run() {
+                println("new child thread run name = ${Thread.currentThread().name}")
+            }
+        }
+        thread.start()
+        Thread.sleep(500)
     }
 }

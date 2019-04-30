@@ -32,4 +32,9 @@ class TraditionalThreadTest {
     fun testNewThreadByKotlinExt() {
         traditionalThread.newThreadByKotlinExt()
     }
+
+    @Test
+    fun testNewChildThreadAndImplRunnable() {
+        traditionalThread.newChildThreadAndImplRunnable()
+    }
 }
